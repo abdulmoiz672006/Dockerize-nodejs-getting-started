@@ -39,7 +39,7 @@ jobs:
           script: |
             cd /home/ubuntu
 
-            if [ ! -d "flask-app" ]; then
+            if [ ! -d "nodejs_app" ]; then
               git clone https://github.com/abdulmoiz672006/Dockerize-nodejs-getting-started.git
             fi
 
