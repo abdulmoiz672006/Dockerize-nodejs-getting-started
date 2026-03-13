@@ -1,67 +1,97 @@
-# nodejs-getting-started
+Dockerized Node.js Application with CI/CD
 
-A barebones Node.js app using [Express](https://expressjs.com/).
+This repository demonstrates how a Node.js web application can be containerized and deployed using Docker, Docker Compose, and GitHub Actions CI/CD.
 
-This application supports the tutorials for both the [Cedar and Fir generations](https://devcenter.heroku.com/articles/generations) of the Heroku platform. You can check them out here:
+The original application was taken from an open-source repository and enhanced with DevOps practices, including containerization and automated deployment.
 
-* [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-* [Getting Started on Heroku Fir with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs-fir)
+Original Project
 
-## Running Locally
+Base Application: Node.js Getting Started App
+Original Repository: https://github.com/heroku/node-js-getting-started
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
+The original project contains the core Node.js application logic.
+My contribution focuses on Dockerization and CI/CD implementation.
 
-```sh
-$ git clone https://github.com/heroku/nodejs-getting-started.git # or clone your own fork
+What I Implemented
+Dockerization
 
-$ cd nodejs-getting-started
-$ npm install
-$ npm start
-```
+Created a Dockerfile to containerize the Node.js application
 
-Your app should now be running on [localhost:5006](http://localhost:5006/).
+Used a lightweight Node Alpine base image
 
-## Deploying to Heroku
+Installed dependencies using npm install
 
-Using resources for this example app counts towards your usage. [Delete your app](https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-apps-destroy) and [database](https://devcenter.heroku.com/articles/heroku-postgresql#removing-the-add-on) as soon as you are done experimenting to control costs.
+Exposed the application port for container access
 
-### Deploy on [Cedar][cedar]
+Docker Compose
 
-By default, apps use Eco dynos on [Cedar][cedar] if you are subscribed to Eco. Otherwise, it defaults to Basic dynos. The 
-Eco dynos plan is shared across all Eco dynos in your account and is recommended if you plan on deploying many small apps 
-to Heroku. Learn more about our low-cost plans [here](https://blog.heroku.com/new-low-cost-plans).
+Created a docker-compose.yml file
 
-Eligible students can apply for platform credits through our new [Heroku for GitHub Students program](https://blog.heroku.com/github-student-developer-program).
+Configured container networking and port mapping
 
-```
-$ heroku create
-$ git push heroku main
-$ heroku open
-```
+Simplified application startup using a single command
 
-### Deploy on [Fir][fir]
+CI/CD Pipeline
 
-By default, apps on [Fir][fir] use 1X-Classic dynos. To create an app on [Fir][fir] you'll need to 
-[create a private space](https://devcenter.heroku.com/articles/working-with-private-spaces#create-a-private-space)
-first.
+Implemented GitHub Actions to automate the workflow.
 
-```
-$ heroku spaces:create <space-name> --team <team-name> --generation fir
-$ heroku create --space <space-name>
-$ git push heroku main
-$ heroku open
-```
+The pipeline automatically:
 
-## Documentation
+Builds the Docker image
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+Pushes the image to Docker Hub
 
-- [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Getting Started on Heroku Fir with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs-fir)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+Deploys the updated container to the server
 
-[cedar]: https://devcenter.heroku.com/articles/generations#cedar
-[fir]: https://devcenter.heroku.com/articles/generations#fir
+This enables continuous integration and deployment whenever code is pushed.
+
+Technology Stack
+
+Node.js
+
+Express.js
+
+Docker
+
+Docker Compose
+
+GitHub Actions (CI/CD)
+
+Project Structure
+.
+├── .github/
+│   └── workflows/
+│       └── cicd.yml
+├── Dockerfile
+├── docker-compose.yml
+├── index.js
+├── package.json
+├── package-lock.json
+└── README.md
+
+
+Running the Application:
+Build and start containers
+docker-compose build
+docker-compose up -d
+Access the application
+http://localhost:5000
+
+If deployed on a server:
+
+http://<SERVER_PUBLIC_IP>:5000
+Key Learnings
+
+Dockerizing an existing application
+
+Writing an optimized Dockerfile
+
+Using Docker Compose for container management
+
+Implementing CI/CD with GitHub Actions
+
+Automating container build and deployment workflows
+
+Notes
+
+This project is part of my DevOps learning journey, where I focus on applying real-world DevOps tools and workflows to existing applications.
