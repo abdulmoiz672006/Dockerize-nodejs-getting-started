@@ -13,6 +13,7 @@ Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cl
 
 ```sh
 $ git clone https://github.com/heroku/nodejs-getting-started.git # or clone your own fork
+
 $ cd nodejs-getting-started
 $ npm install
 $ npm start
